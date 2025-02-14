@@ -1,3 +1,6 @@
+# Samples are not included in the repository, they're confidential
+samples/
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
