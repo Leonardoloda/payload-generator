@@ -23,9 +23,12 @@ class SampleStep(Step):
 
         self.console.print(env_table)
 
-        selected_file = Prompt.ask("Please select an environment (by number)", choices=[str(i) for i in range(1, len(samples) + 1)])
+        selected_file = Prompt.ask(
+            "Please select an environment (by number)",
+            choices=[str(i) for i in range(1, len(samples) + 1)]
+        )
         selected_filename = samples[int(selected_file) - 1]
 
         sample = self.file_handler.read_file(f"{path}/{selected_filename}")
 
-        return sample;
+        return sample

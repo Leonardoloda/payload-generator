@@ -7,7 +7,7 @@ class Prompts:
         self.applications = {
             "crew": "Crew",
             "hotels": "Hotels",
-            "monthly": "Monthly Block Limits"
+            "monthly": "Monthly Block Limits",
         }
 
     def get_prompt(self, key):

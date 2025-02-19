@@ -1,7 +1,8 @@
-from step import Step
 from rich.console import Console
 from rich.table import Table
 from rich.prompt import Prompt
+
+from step import Step
 
 class ApplicationStep(Step):
     def __init__(self, console: Console, apps: list[str]) -> None:
@@ -10,8 +11,8 @@ class ApplicationStep(Step):
 
     def execute(self):
         app_table = Table(
-            title="Available Applications", 
-            show_header=True, 
+            title="Available Applications",
+            show_header=True,
             header_style="bold magenta"
         )
 
@@ -23,7 +24,10 @@ class ApplicationStep(Step):
 
         self.console.print(app_table)
 
-        selected_app = Prompt.ask("Please select an application (by number)", choices=[str(i) for i in range(1, len(self.apps) + 1)])
+        selected_app = Prompt.ask(
+            "Please select an application (by number)", 
+            choices=[str(i) for i in range(1, len(self.apps) + 1)]
+        )
         selected_app_name = self.apps[int(selected_app) - 1]
 
-        return selected_app_name;
+        return selected_app_name
