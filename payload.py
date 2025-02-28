@@ -1,3 +1,5 @@
+from json import dumps
+
 from pyperclip import copy
 
 class Payload:
@@ -21,8 +23,8 @@ class Payload:
     def get_topic(self) -> str:
         return self.topic % self.environment
 
-    def print(self) -> dict:
-        return {
+    def print(self) -> str:
+        return dumps({
             "eventSource":"aws:kafka",
             "eventSourceArn":"arn:aws:kafka:us-east-1:123456789012:cluster/vpc-2priv-2pub/751d2973-a626-431c-9d4e-d7975eb44dd7-2",
             # spell-checker: disable-next-line
@@ -41,4 +43,4 @@ class Payload:
                     }
                 ]
             }
-        }
+        })
