@@ -8,6 +8,7 @@ from application_step import ApplicationStep
 from sample_step import SampleStep
 from environment_step import EnvironmentStep
 from result_step import ResultStep
+from repeat_step import RepeatStep
 
 from config import APPLICATION_CHOICES, ENVIRONMENT_CHOICES, APPLICATION_CONFIG, PATHS_CONFIG
 
@@ -21,6 +22,7 @@ app_selection = ApplicationStep(console, APPLICATION_CHOICES)
 env_selection = EnvironmentStep(console, ENVIRONMENT_CHOICES)
 sample_selection = SampleStep(console, file_handler)
 result = ResultStep(console)
+reuse = RepeatStep(console)
 
 while True:
     welcome.execute()
@@ -49,3 +51,11 @@ while True:
 
     env_selection.next(result)
     result.execute(created_payload.print())
+
+    result.next(reuse)
+    should_reuse = reuse.execute()
+
+    while should_reuse:
+        created_payload.copy()
+        reuse.execute(reuse)
+    
